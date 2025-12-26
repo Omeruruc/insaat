@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { MapPin, Calendar, Maximize2, User, ChevronLeft } from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { MapPin, Calendar, Maximize2, User, ChevronLeft, ChevronRight, X } from 'lucide-react';
 import { projects } from '../data/staticData';
 import { useNavigate, useParams } from 'react-router-dom';
 
@@ -7,7 +7,49 @@ export function ProjectDetailPage() {
   const navigate = useNavigate();
   const { projectId } = useParams<{ projectId: string }>();
   const project = projects.find((p) => p.id === projectId);
-  const [currentMediaIndex, setCurrentMediaIndex] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const [lightboxIndex, setLightboxIndex] = useState(0);
+
+  const galleryImages = project?.gallery || [project?.hero_image].filter(Boolean);
+
+  useEffect(() => {
+    if (lightboxOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [lightboxOpen]);
+
+  const openLightbox = (index: number) => {
+    setLightboxIndex(index);
+    setLightboxOpen(true);
+  };
+
+  const closeLightbox = () => {
+    setLightboxOpen(false);
+  };
+
+  const nextImage = () => {
+    setLightboxIndex((prev) => (prev + 1) % galleryImages.length);
+  };
+
+  const prevImage = () => {
+    setLightboxIndex((prev) => (prev - 1 + galleryImages.length) % galleryImages.length);
+  };
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (!lightboxOpen) return;
+      if (e.key === 'Escape') closeLightbox();
+      if (e.key === 'ArrowLeft') prevImage();
+      if (e.key === 'ArrowRight') nextImage();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [lightboxOpen]);
 
   if (!project) {
     return (
@@ -34,14 +76,13 @@ export function ProjectDetailPage() {
           alt={project.title}
           className="w-full h-full object-cover"
           loading="eager"
-          fetchPriority="high"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/30 to-transparent" />
 
-        <div className="absolute bottom-0 left-0 right-0 p-8 md:p-12">
+        <div className="absolute bottom-0 left-0 right-0 p-6 md:p-10 lg:p-12">
           <div className="max-w-7xl mx-auto">
             <span
-              className={`inline-block px-4 py-2 text-xs tracking-widest uppercase mb-6 ${
+              className={`inline-block px-4 py-2 text-xs tracking-widest uppercase mb-4 md:mb-6 ${
                 project.status === 'ongoing'
                   ? 'bg-amber-600 text-white'
                   : 'bg-zinc-800 text-gray-300'
@@ -50,7 +91,7 @@ export function ProjectDetailPage() {
               {project.status === 'ongoing' ? 'Devam Eden' : 'Tamamlanan'}
             </span>
 
-            <h1 className="font-serif text-4xl md:text-6xl text-white mb-6">
+            <h1 className="font-serif text-2xl md:text-3xl lg:text-4xl text-white mb-4 md:mb-6 leading-tight">
               {project.title}
             </h1>
 
@@ -97,21 +138,92 @@ export function ProjectDetailPage() {
             Proje Galerisi
           </h2>
 
-          <div className="relative aspect-video bg-zinc-900 overflow-hidden mb-8">
+          {galleryImages.length > 0 ? (
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {galleryImages.map((image: string, index: number) => (
+                <div
+                  key={index}
+                  className="relative aspect-video bg-zinc-900 overflow-hidden rounded-lg cursor-pointer group"
+                  onClick={() => openLightbox(index)}
+                >
+                  <img
+                    src={image}
+                    alt={`${project.title} - Galeri görseli ${index + 1}`}
+                    className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-110"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <div className="bg-black/50 backdrop-blur-sm px-4 py-2 rounded-lg">
+                      <span className="text-white text-sm">Büyüt</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="text-center text-gray-400 text-sm">
+              <p>Daha fazla proje görseli yakında eklenecektir</p>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {/* Lightbox Modal */}
+      {lightboxOpen && (
+        <div
+          className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4"
+          onClick={closeLightbox}
+        >
+          <button
+            onClick={closeLightbox}
+            className="absolute top-4 right-4 z-10 text-white hover:text-amber-500 transition-colors duration-300 p-2"
+            aria-label="Kapat"
+          >
+            <X className="w-8 h-8" />
+          </button>
+
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              prevImage();
+            }}
+            className="absolute left-4 z-10 text-white hover:text-amber-500 transition-colors duration-300 p-4 bg-black/50 backdrop-blur-sm rounded-full hover:bg-black/70"
+            aria-label="Önceki görsel"
+          >
+            <ChevronLeft className="w-8 h-8" />
+          </button>
+
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              nextImage();
+            }}
+            className="absolute right-4 z-10 text-white hover:text-amber-500 transition-colors duration-300 p-4 bg-black/50 backdrop-blur-sm rounded-full hover:bg-black/70"
+            aria-label="Sonraki görsel"
+          >
+            <ChevronRight className="w-8 h-8" />
+          </button>
+
+          <div
+            className="max-w-7xl max-h-[90vh] w-full h-full flex items-center justify-center"
+            onClick={(e) => e.stopPropagation()}
+          >
             <img
-              src={project.hero_image}
-              alt={`${project.title} - Proje galeri görseli`}
-              className="w-full h-full object-cover"
-              loading="lazy"
-              decoding="async"
+              src={galleryImages[lightboxIndex]}
+              alt={`${project.title} - Galeri görseli ${lightboxIndex + 1}`}
+              className="max-w-full max-h-full object-contain rounded-lg"
             />
           </div>
 
-          <div className="text-center text-gray-400 text-sm">
-            <p>Daha fazla proje görseli yakında eklenecektir</p>
+          <div className="absolute bottom-4 left-1/2 -translate-x-1/2 z-10 bg-black/50 backdrop-blur-sm px-4 py-2 rounded-full">
+            <span className="text-white text-sm">
+              {lightboxIndex + 1} / {galleryImages.length}
+            </span>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

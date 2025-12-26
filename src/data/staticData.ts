@@ -1,111 +1,80 @@
 export const companyInfo = {
-  story: '1987 yılında kurulan firmamız, otuz yıldan fazla süredir mimarlık yeniliğinin ön saflarında yer almıştır. Olağanüstü tasarımın yaşamları dönüştürdüğüne ve inşa edilmiş çevremizin geleceğini şekillendirdiğine inanıyoruz. Yarattığımız her yapı, vizyon, kesinlik ve ölümsüz şıklığın bir hikayesini anlatır.',
+  story: 'Sektördeki köklü yolculuğumuz, 2016 yılında MDGRUP Elektrik İnşaat Şirketimiz ile başlamış olup, Elektrik ve İnşaat taahhüt sektöründe yıllarca edindiğimiz teknik birikim, saha tecrübesi ve güvenilir çözüm ortaklığı kimliğimiz; bizi zamanla daha büyük hedeflere ve geniş kapsamlı projelere yönlendirmiştir. Bu büyüme ve kurumsallaşma vizyonunun bir sonucu olarak, 2021 tarihinde MBM Elektrik İnşaat Mühendislik Nakliyat ve Sanayi Ticaret Limited Şirketi kurularak faaliyet alanlarımız genişletilmiştir. MDGRUP\'tan aldığımız teknik disiplini ve mühendislik kültürünü, MBM markasıyla inşaat sektörüne taşıdık. Bugün, TOKİ (Toplu Konut İdaresi) projeleri başta olmak üzere; kamu ve özel sektör taahhütlerinde ana yüklenici olarak faaliyet gösteriyoruz. Elektrik altyapısından edindiğimiz "detaylara hakimiyet" yeteneğimizi, kaba ve ince inşaat süreçleriyle birleştirerek; temelden çatıya entegre, sağlam ve modern yaşam alanları inşa ediyoruz. MBM Ailesi olarak; 2016\'dan bugüne taşıdığımız tecrübe ve 2021\'de yenilenen güçlü yüzümüzle, ülkemizin imar yapısına değer katmaya devam ediyoruz.',
   vision:
-    'Mimarlık mükemmelliğinin sınırlarını yeniden tanımlamak ve gelecek nesilleri ilham verecek mekanlar yaratmak.',
+    'İnşaat ve taahhüt sektöründe; ulusal ve uluslararası standartlarda projeler üreten, teknolojik yenilikleri iş süreçlerine entegre eden, güvenilirlik ve kalite denildiğinde akla gelen ilk marka olmak. Sadece binalar değil; çevreye duyarlı, güvenli ve modern yaşam kültürleri inşa ederek sektörde lider konuma yükselmek.',
   mission:
-    'Estetik ustalığı yapısal yenilikle birleştiren eşsiz mimarlık çözümleri sunmayı ve her projeyi kalite ve sofistikeliğin en yüksek standartlarını aşmaya taahhüt ediyoruz.',
+    'İnşaat, elektrik ve mühendislik disiplinlerindeki entegre uzmanlığımızı, \'Önce İnsan, Önce Güven\' felsefesiyle harmanlayarak; barınma ihtiyacının ötesinde, teknik açıdan kusursuz ve nitelikli yaşam merkezleri inşa etmektir. Başta TOKİ olmak üzere tüm kamu ve özel sektör projelerinde; ulusal standartlara ve deprem yönetmeliklerine tam uyumlu, estetik ve sağlam yapılar üretirken; iş güvenliğinden ödün vermeden, ülkemize nesiller boyu ayakta kalacak, katma değerli ve güvenli eserler kazandırmayı taahhüt ediyoruz.',
   values:
-    'Mükemmellik • Yenilik • Dürüstlük • Sürdürülebilirlik • Müşteri Odaklı Yaklaşım • Ayrıntılara Dikkat',
+    'Şeffaflık: Tüm iş süreçlerinde açıklık ve dürüstlük. • İş Güvenliği: "Sıfır İş Kazası" hedefiyle çalışmak. • Mühendislik Etiği: Bilimin ve tekniğin doğrularından sapmamak. • Zamanında Teslim: Taahhüt edilen sürede projeyi bitirmek.',
 };
 
-export const projects = [
+export const projects: any[] = [
   {
-    id: '1',
-    title: 'Zenith Tower',
+    id: 'ankara-sereflikochisar-bogazici',
+    title: 'ANKARA İLİ, ŞEREFLİKOÇHİSAR İLÇESİ, BOĞAZİÇİ MAHALLESİ 360 KONUT (+2 K.D.) İNŞAATI İLE ALTYAPI VE ÇEVRE DÜZENLEMESİ İŞİ',
     description:
-      '68 katlı karışık kullanımlı gökdelen, şehir siluetini kristal cephe ve sürdürülebilir tasarım ilkeleriyle yeniden tanımlıyor. Bu mimarlık şaheseri lüks konutları, üstün ofis alanlarını ve dünya standartlarında olanaklarını entegre ediyor.',
-    status: 'ongoing',
-    location: 'Dubai, BAE',
-    client: 'Gizli',
+      'Ankara ili Şereflikoçhisar ilçesi Boğaziçi Mahallesi\'nde 360 konut ve 2 katlı dükkanların inşaatı ile altyapı ve çevre düzenlemesi projesi. Modern yaşam alanları, oyun alanları, fitness alanları ve sosyal tesislerle donatılmış TOKİ projesi.',
+    status: 'completed',
+    location: 'Şereflikoçhisar, Ankara',
+    client: 'TOKİ',
     year: 2024,
-    area: '450.000 m²',
-    hero_image:
-      'https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    area: '360 Konut + 2 Katlı Dükkanlar',
+    hero_image: '/projects/ankara-sereflikochisar/hero.png',
+    gallery: [
+      '/projects/ankara-sereflikochisar/gallery-1.png',
+      '/projects/ankara-sereflikochisar/gallery-2.png',
+      '/projects/ankara-sereflikochisar/gallery-3.png',
+    ],
     featured: true,
     displayOrder: 1,
   },
   {
-    id: '2',
-    title: 'The Meridian Residences',
+    id: 'adiyaman-sincik-1-etap',
+    title: 'ADIYAMAN İLİ, SİNCİK İLÇESİ 1.ETAP 322 KONUT İNŞAATI İLE ALTYAPI VE ÇEVRE DÜZENLEMESİ İŞİ',
     description:
-      'Kıyı cephesine bakan köşklerin özel koleksiyonu, çağdaş minimalizmle doğal malzemeleri birleştiriyor. Her konut, kendine özgü intiyörleriyle ince zevk sahibi müşteriler için tasarlanmıştır.',
+      'Adıyaman ili Sincik ilçesinde 1. Etap 322 konut inşaatı ile altyapı ve çevre düzenlemesi projesi. Modern konutlar, sosyal tesisler ve çevre düzenlemeleriyle donatılmış TOKİ projesi.',
     status: 'completed',
-    location: 'Malibu, Kaliforniya',
-    client: 'Özel Gayrimenkul Grubu',
-    year: 2023,
-    area: '85.000 m²',
-    hero_image:
-      'https://images.pexels.com/photos/1732414/pexels-photo-1732414.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    location: 'Sincik, Adıyaman',
+    client: 'TOKİ',
+    year: 2024,
+    area: '322 Konut',
+    hero_image: '/projects/adiyaman-sincik/hero.png',
+    gallery: [
+      '/projects/adiyaman-sincik/gallery-1.png',
+      '/projects/adiyaman-sincik/gallery-2.png',
+      '/projects/adiyaman-sincik/gallery-3.png',
+      '/projects/adiyaman-sincik/gallery-4.png',
+      '/projects/adiyaman-sincik/gallery-5.png',
+    ],
     featured: true,
     displayOrder: 2,
   },
   {
-    id: '3',
-    title: 'Metropolitan Arts Center',
+    id: 'diyarbakir-hani-dereli',
+    title: 'DİYARBAKIR İLİ, HANİ İLÇESİ, DERELİ MAHALLESİ 346 ADET KONUT İNŞAATI İLE ALTYAPI VE ÇEVRE DÜZENLEMESİ İŞİ',
     description:
-      'Dramatik konsol tasarımıyla dikkat çeken kültür merkezi, galerileri, performans mekanlarını ve eğitim tesislerini barındırıyor. Bina, sanatsal mükemmellik ve mimarlık yeniliğinin bir işareti olarak hizmet vermektedir.',
+      'Diyarbakır ili Hani ilçesi Dereli Mahallesi\'nde 346 adet konut inşaatı ile altyapı ve çevre düzenlemesi projesi. Modern konutlar, oyun alanları, sosyal tesisler ve çevre düzenlemeleriyle donatılmış TOKİ projesi.',
     status: 'completed',
-    location: 'Singapur',
-    client: 'Ulusal Sanatlar Vakfı',
-    year: 2022,
-    area: '320.000 m²',
-    hero_image:
-      'https://images.pexels.com/photos/2246476/pexels-photo-2246476.jpeg?auto=compress&cs=tinysrgb&w=1200',
+    location: 'Hani, Diyarbakır',
+    client: 'TOKİ',
+    year: 2025,
+    area: '346 Konut',
+    hero_image: '/projects/diyarbakir-hani-dereli/hero.jpeg',
+    gallery: [
+      '/projects/diyarbakir-hani-dereli/gallery-1.jpeg',
+      '/projects/diyarbakir-hani-dereli/gallery-2.jpeg',
+      '/projects/diyarbakir-hani-dereli/gallery-3.jpeg',
+    ],
     featured: true,
     displayOrder: 3,
-  },
-  {
-    id: '4',
-    title: 'Oasis Corporate Campus',
-    description:
-      'Biyofilik tasarım ilkeleri ile son teknoloji entegre eden sürdürülebilir şirket merkezi. Kampüs teraslı bahçeleri, enerji verimli sistemleri ve işbirliğini teşvik eden alanlarıyla dikkat çekiyor.',
-    status: 'ongoing',
-    location: 'Austin, Texas',
-    client: 'Teknoloji İnovasyon Grubu',
-    year: 2024,
-    area: '520.000 m²',
-    hero_image:
-      'https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    featured: false,
-    displayOrder: 4,
-  },
-  {
-    id: '5',
-    title: 'Heritage Museum & Archives',
-    description:
-      'Tarihi bir binanın duyarlı restorasyon ve genişletmesi, korunan miras öğelerini çağdaş eklemelerle birleştiriyor. Proje, geçmişe saygı gösterirken geleceği kucaklama uzmanlığımızı göstermektedir.',
-    status: 'completed',
-    location: 'Londra, İngiltere',
-    client: 'Heritage Trust',
-    year: 2021,
-    area: '95.000 m²',
-    hero_image:
-      'https://images.pexels.com/photos/1470502/pexels-photo-1470502.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    featured: false,
-    displayOrder: 5,
-  },
-  {
-    id: '6',
-    title: 'Skyline Luxury Condominiums',
-    description:
-      'Şeffaf pencereler, özel teraslar ve beş yıldızlı olanaklarla eşsiz lüks yaşamı sunan ultra premium konut kulesi.',
-    status: 'ongoing',
-    location: 'Miami, Florida',
-    client: 'Prestij Geliştirmeler',
-    year: 2024,
-    area: '280.000 m²',
-    hero_image:
-      'https://images.pexels.com/photos/1134176/pexels-photo-1134176.jpeg?auto=compress&cs=tinysrgb&w=1200',
-    featured: false,
-    displayOrder: 6,
   },
 ];
 
 export const heroSliderImages = [
-  'https://images.pexels.com/photos/325185/pexels-photo-325185.jpeg?auto=compress&cs=tinysrgb&w=1920',
-  'https://images.pexels.com/photos/1732414/pexels-photo-1732414.jpeg?auto=compress&cs=tinysrgb&w=1920',
-  'https://images.pexels.com/photos/2246476/pexels-photo-2246476.jpeg?auto=compress&cs=tinysrgb&w=1920',
-  'https://images.pexels.com/photos/380768/pexels-photo-380768.jpeg?auto=compress&cs=tinysrgb&w=1920',
-  'https://images.pexels.com/photos/1470502/pexels-photo-1470502.jpeg?auto=compress&cs=tinysrgb&w=1920',
-  'https://images.pexels.com/photos/1134176/pexels-photo-1134176.jpeg?auto=compress&cs=tinysrgb&w=1920',
+  'https://r.songelisme.com/2024/11/TOKI-GORSEL-6.12.2022.jpg',
+  'https://imaj.emlakjet.com/resize/820/480/Haberler_Unicrow/1727380883344.jpg',
+  'https://www.hepsiemlak.com/emlak-yasam/wp-content/uploads/2024/03/toki.jpg',
+  'https://trthaberstatic.cdn.wp.trt.com.tr/resimler/1562000/toki-1563862.jpg',
+  'https://www.indyturk.com/sites/default/files/styles/1368x911/public/article/main_image/2022/09/18/1013106-1283086592.jpg?itok=biiHnRXD',
+  'https://iaahbr.tmgrup.com.tr/e70464/0/0/0/0/0/0?u=https://iahbr.tmgrup.com.tr/album/2025/11/07/toki-sosyal-konut-rehberi-ailesinin-evi-olan-gencler-tokiye-basvurabilir-mi-uzman-acikladi-basvuru-sureci-sart-1762526419533.jpeg&mw=752&mh=700',
 ];

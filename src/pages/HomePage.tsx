@@ -1,4 +1,4 @@
-import { ChevronDown, ChevronLeft, ChevronRight, Building2, Hammer } from 'lucide-react';
+import { ChevronDown, ChevronLeft, ChevronRight, Building2, Zap, FileText, Truck } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { heroSliderImages } from '../data/staticData';
 import { useNavigate } from 'react-router-dom';
@@ -78,12 +78,12 @@ export function HomePage() {
         </div>
 
         <div className="relative h-full flex flex-col items-center justify-center px-6 text-center z-10">
-          <div className="max-w-5xl mx-auto space-y-8 animate-fade-in-up">
+          <div className="max-w-5xl mx-auto space-y-8">
             {/* Modern glassmorphism container */}
             <div className="backdrop-blur-md bg-black/15 border border-white/12 rounded-2xl p-8 md:p-12 shadow-2xl">
               <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-white tracking-tight leading-tight drop-shadow-2xl">
-                Ölümsüz
-                <span className="block text-amber-500 mt-4 drop-shadow-lg">Şıklık Yaratmak</span>
+                Sağlam Adım
+                <span className="block text-amber-500 mt-4 drop-shadow-lg">Güçlü İnşaat</span>
               </h1>
 
               <div className="w-24 h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto my-8"></div>
@@ -108,47 +108,85 @@ export function HomePage() {
         </div>
       </section>
 
-      {/* Üst Yapı ve Taahhüt Hizmetleri sütunları */}
+      {/* Faaliyet Alanlarımız */}
       <section className="relative py-16 md:py-24 px-6">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8 lg:gap-12">
-          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/70 backdrop-blur-md p-8 shadow-[0_14px_50px_rgba(0,0,0,0.55)]">
-            <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 via-transparent to-amber-500/5" />
-            <div className="relative flex items-start space-x-4">
-              <div className="p-3 rounded-xl bg-amber-500/20 border border-amber-500/30">
-                <Building2 className="w-7 h-7 text-amber-400" />
-              </div>
-              <div className="space-y-3">
-                <h3 className="text-white text-2xl font-semibold">Üst Yapı Hizmetleri</h3>
-                <p className="text-gray-300 leading-relaxed">
-                  Konut, ofis, ticari ve endüstriyel projelerde modern mühendislik çözümleri; tasarımdan
-                  uygulamaya tüm süreçleri uçtan uca yönetiyoruz.
-                </p>
-                <ul className="text-gray-400 text-sm space-y-1 list-disc list-inside">
-                  <li>Mimari & statik uygulama projeleri</li>
-                  <li>MEP/elektrik altyapı tasarımı ve devreye alma</li>
-                  <li>Kalite, güvenlik ve sürdürülebilirlik entegrasyonu</li>
-                </ul>
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-12">
+            <h2 className="font-serif text-4xl md:text-5xl text-white mb-4">
+              Faaliyet Alanlarımız
+            </h2>
+            <div className="w-24 h-px bg-amber-600 mx-auto" />
+          </div>
+          
+          <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
+            {/* Üst Yapı İnşaatları */}
+            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/70 backdrop-blur-md p-8 shadow-[0_14px_50px_rgba(0,0,0,0.55)]">
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 via-transparent to-amber-500/5" />
+              <div className="relative flex items-start space-x-4">
+                <div className="p-3 rounded-xl bg-amber-500/20 border border-amber-500/30">
+                  <Building2 className="w-7 h-7 text-amber-400" />
+                </div>
+                <div className="space-y-3 flex-1">
+                  <h3 className="text-white text-2xl font-semibold">Üst Yapı İnşaatları</h3>
+                  <ul className="text-gray-400 text-sm space-y-2 list-disc list-inside">
+                    <li>Toplu konutlar (TOKİ)</li>
+                    <li>Ticari binalar</li>
+                    <li>Sosyal tesisler</li>
+                  </ul>
+                </div>
               </div>
             </div>
-          </div>
 
-          <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/70 backdrop-blur-md p-8 shadow-[0_14px_50px_rgba(0,0,0,0.55)]">
-            <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 via-transparent to-amber-500/5" />
-            <div className="relative flex items-start space-x-4">
-              <div className="p-3 rounded-xl bg-amber-500/20 border border-amber-500/30">
-                <Hammer className="w-7 h-7 text-amber-400" />
+            {/* Elektrik Taahhüt İşleri */}
+            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/70 backdrop-blur-md p-8 shadow-[0_14px_50px_rgba(0,0,0,0.55)]">
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 via-transparent to-amber-500/5" />
+              <div className="relative flex items-start space-x-4">
+                <div className="p-3 rounded-xl bg-amber-500/20 border border-amber-500/30">
+                  <Zap className="w-7 h-7 text-amber-400" />
+                </div>
+                <div className="space-y-3 flex-1">
+                  <h3 className="text-white text-2xl font-semibold">Elektrik Taahhüt İşleri</h3>
+                  <ul className="text-gray-400 text-sm space-y-2 list-disc list-inside">
+                    <li>OG/AG enerji nakil hatları</li>
+                    <li>Trafo merkezleri</li>
+                    <li>Bina içi elektrik tesisatları</li>
+                  </ul>
+                </div>
               </div>
-              <div className="space-y-3">
-                <h3 className="text-white text-2xl font-semibold">Taahhüt İşleri</h3>
-                <p className="text-gray-300 leading-relaxed">
-                  Elektrik ve inşaat taahhütlerinde proje planlama, saha koordinasyonu ve zaman/bütçe
-                  optimizasyonuyla yüksek standartlarda teslimat sağlıyoruz.
-                </p>
-                <ul className="text-gray-400 text-sm space-y-1 list-disc list-inside">
-                  <li>Altyapı & üstyapı elektrik sistemleri kurulumu</li>
-                  <li>Enerji verimliliği ve otomasyon çözümleri</li>
-                  <li>Anahtar teslim proje yönetimi ve raporlama</li>
-                </ul>
+            </div>
+
+            {/* Mühendislik & Projelendirme */}
+            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/70 backdrop-blur-md p-8 shadow-[0_14px_50px_rgba(0,0,0,0.55)]">
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 via-transparent to-amber-500/5" />
+              <div className="relative flex items-start space-x-4">
+                <div className="p-3 rounded-xl bg-amber-500/20 border border-amber-500/30">
+                  <FileText className="w-7 h-7 text-amber-400" />
+                </div>
+                <div className="space-y-3 flex-1">
+                  <h3 className="text-white text-2xl font-semibold">Mühendislik & Projelendirme</h3>
+                  <ul className="text-gray-400 text-sm space-y-2 list-disc list-inside">
+                    <li>Statik, mekanik ve elektrik proje çizimleri</li>
+                    <li>Teknik danışmanlık</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Lojistik ve Nakliyat */}
+            <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-zinc-900/70 backdrop-blur-md p-8 shadow-[0_14px_50px_rgba(0,0,0,0.55)]">
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 via-transparent to-amber-500/5" />
+              <div className="relative flex items-start space-x-4">
+                <div className="p-3 rounded-xl bg-amber-500/20 border border-amber-500/30">
+                  <Truck className="w-7 h-7 text-amber-400" />
+                </div>
+                <div className="space-y-3 flex-1">
+                  <h3 className="text-white text-2xl font-semibold">Lojistik ve Nakliyat</h3>
+                  <ul className="text-gray-400 text-sm space-y-2 list-disc list-inside">
+                    <li>İnşaat malzemesi tedariği</li>
+                    <li>Hafriyat nakliyesi</li>
+                    <li>Ağır yük taşımacılığı</li>
+                  </ul>
+                </div>
               </div>
             </div>
           </div>

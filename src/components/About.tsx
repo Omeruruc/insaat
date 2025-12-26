@@ -20,7 +20,7 @@ export function About() {
       if (teamResult.data) setTeamMembers(teamResult.data);
       if (infoResult.data) {
         const infoMap: Record<string, string> = {};
-        infoResult.data.forEach((item) => {
+        (infoResult.data as CompanyInfo[]).forEach((item) => {
           infoMap[item.section] = item.content;
         });
         setCompanyInfo(infoMap);

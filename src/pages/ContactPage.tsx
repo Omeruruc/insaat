@@ -12,6 +12,22 @@ export function ContactPage() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // E-posta içeriğini hazırla
+    const subject = encodeURIComponent(`İletişim Formu - ${formData.name}`);
+    const body = encodeURIComponent(
+      `Ad Soyad: ${formData.name}\n` +
+      `E-posta: ${formData.email}\n` +
+      `Telefon: ${formData.phone || 'Belirtilmemiş'}\n\n` +
+      `Mesaj:\n${formData.message}`
+    );
+    
+    // mailto linki oluştur
+    const mailtoLink = `mailto:mdemiralay@hotmail.com?subject=${subject}&body=${body}`;
+    
+    // E-posta uygulamasını aç
+    window.location.href = mailtoLink;
+    
     setSubmitted(true);
     setTimeout(() => {
       setSubmitted(false);
@@ -39,7 +55,7 @@ export function ContactPage() {
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="font-serif text-5xl md:text-6xl text-white mb-6">
-            Birlikte Yaratış
+            Birlikte Yürüyelim
           </h1>
           <div className="w-24 h-px bg-amber-600 mx-auto mb-8" />
           <p className="text-gray-400 text-lg max-w-2xl mx-auto font-light">
@@ -60,11 +76,20 @@ export function ContactPage() {
                 </div>
                 <div>
                   <h4 className="text-white font-medium mb-2">Adres</h4>
-                  <p className="text-gray-400 font-light">
-                    Peyas, Mahabad Blv
+                  <a
+                    href="https://maps.app.goo.gl/gjkWcDrPPk15sd9x6"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 font-light hover:text-amber-500 transition-colors duration-300 cursor-pointer block"
+                  >
+                    FIRAT MAH. MAHABAD BUL. CADDE 75
                     <br />
-                    21070 Kayapınar / Diyarbakır
-                  </p>
+                    MEGAARSLAN YAPI SITESI A BLOK NO: 77A
+                    <br />
+                    İÇ KAPI NO: 49
+                    <br />
+                    KAYAPINAR / DİYARBAKIR
+                  </a>
                 </div>
               </div>
 
@@ -74,7 +99,12 @@ export function ContactPage() {
                 </div>
                 <div>
                   <h4 className="text-white font-medium mb-2">Telefon</h4>
-                  <p className="text-gray-400 font-light">+90 (212) 123-4567</p>
+                  <a
+                    href="tel:+904122510313"
+                    className="text-gray-400 font-light hover:text-amber-500 transition-colors duration-300 cursor-pointer"
+                  >
+                    0412 251 0313
+                  </a>
                 </div>
               </div>
 
@@ -84,9 +114,12 @@ export function ContactPage() {
                 </div>
                 <div>
                   <h4 className="text-white font-medium mb-2">E-posta</h4>
-                  <p className="text-gray-400 font-light">
-                    iletisim@mbm-architects.com
-                  </p>
+                  <a
+                    href="mailto:mdemiralay@hotmail.com"
+                    className="text-gray-400 font-light hover:text-amber-500 transition-colors duration-300 cursor-pointer"
+                  >
+                    mdemiralay@hotmail.com
+                  </a>
                 </div>
               </div>
             </div>
@@ -158,7 +191,7 @@ export function ContactPage() {
                   value={formData.phone}
                   onChange={handleChange}
                   className="w-full bg-zinc-900 border border-zinc-800 px-6 py-4 text-white focus:border-amber-600 focus:outline-none transition-colors duration-300"
-                  placeholder="+90 (212) 123-4567"
+                  placeholder="0412 251 0313"
                 />
               </div>
 

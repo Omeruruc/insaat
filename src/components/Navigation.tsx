@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 interface NavigationProps {
   onNavigate: (section: string) => void;
   activeSection: string;
@@ -7,6 +7,7 @@ interface NavigationProps {
 
 export function Navigation({ onNavigate, activeSection }: NavigationProps) {
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -34,7 +35,10 @@ export function Navigation({ onNavigate, activeSection }: NavigationProps) {
       <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-amber-500/40 to-transparent pointer-events-none" />
       <div className="max-w-7xl mx-auto px-6 lg:px-8 relative">
         <div className="flex items-center justify-between h-20">
-          <Link to="/" className="flex items-center space-x-3 group">
+          <button
+            onClick={() => navigate('/')}
+            className="flex items-center space-x-3 group"
+          >
             <img
               src="/mbm-header-logo.png"
               alt="MBM"
@@ -43,7 +47,7 @@ export function Navigation({ onNavigate, activeSection }: NavigationProps) {
             <span className="text-base md:text-lg font-semibold text-white tracking-[0.2em] uppercase leading-none drop-shadow-lg">
               MBM <span className="text-amber-500">Elektrik İnşaat</span>
             </span>
-          </Link>
+          </button>
 
           <div className="hidden md:flex items-center space-x-4">
             {navItems.map((item) => (

@@ -51,11 +51,20 @@ export function Contact() {
                 </div>
                 <div>
                   <h4 className="text-white font-medium mb-2">Address</h4>
-                  <p className="text-gray-400 font-light">
-                    Peyas, Mahabad Blv
+                  <a
+                    href="https://maps.app.goo.gl/gjkWcDrPPk15sd9x6"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-400 font-light hover:text-amber-500 transition-colors duration-300 cursor-pointer block"
+                  >
+                    FIRAT MAH. MAHABAD BUL. CADDE 75
                     <br />
-                    21070 Kayapinar / Diyarbakir, Türkiye
-                  </p>
+                    MEGAARSLAN YAPI SITESI A BLOK NO: 77A
+                    <br />
+                    İÇ KAPI NO: 49
+                    <br />
+                    KAYAPINAR / DİYARBAKIR
+                  </a>
                 </div>
               </div>
 
@@ -65,7 +74,12 @@ export function Contact() {
                 </div>
                 <div>
                   <h4 className="text-white font-medium mb-2">Phone</h4>
-                  <p className="text-gray-400 font-light">+1 (555) 123-4567</p>
+                  <a
+                    href="tel:+904122510313"
+                    className="text-gray-400 font-light hover:text-amber-500 transition-colors duration-300 cursor-pointer"
+                  >
+                    0412 251 0313
+                  </a>
                 </div>
               </div>
 
@@ -75,9 +89,12 @@ export function Contact() {
                 </div>
                 <div>
                   <h4 className="text-white font-medium mb-2">Email</h4>
-                  <p className="text-gray-400 font-light">
-                    contact@mbm-architects.com
-                  </p>
+                  <a
+                    href="mailto:mdemiralay@hotmail.com"
+                    className="text-gray-400 font-light hover:text-amber-500 transition-colors duration-300 cursor-pointer"
+                  >
+                    mdemiralay@hotmail.com
+                  </a>
                 </div>
               </div>
             </div>
@@ -149,7 +166,7 @@ export function Contact() {
                   value={formData.phone}
                   onChange={handleChange}
                   className="w-full bg-zinc-900 border border-zinc-800 px-6 py-4 text-white focus:border-amber-600 focus:outline-none transition-colors duration-300"
-                  placeholder="+1 (555) 123-4567"
+                  placeholder="0412 251 0313"
                 />
               </div>
 

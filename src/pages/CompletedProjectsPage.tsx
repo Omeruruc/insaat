@@ -2,8 +2,9 @@ import { MapPin, Calendar, ChevronRight } from 'lucide-react';
 import { projects } from '../data/staticData';
 import { useNavigate } from 'react-router-dom';
 
-export function ProjectsPage() {
+export function CompletedProjectsPage() {
   const navigate = useNavigate();
+  const completedProjects = projects.filter((project) => project.status === 'completed');
 
   return (
     <section className="relative overflow-hidden min-h-screen bg-zinc-950 py-24 md:py-32">
@@ -19,31 +20,16 @@ export function ProjectsPage() {
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="font-serif text-5xl md:text-6xl text-white mb-6">
-            Portföyümüz
+            Tamamlanan Projeler
           </h1>
           <div className="w-24 h-px bg-amber-600 mx-auto mb-8" />
           <p className="text-gray-400 text-lg max-w-2xl mx-auto font-light">
-            Mimarlık mükemmelliğini tanımlayan saygın projelerimizi keşfedin
+            Başarıyla tamamladığımız projelerimizi keşfedin
           </p>
         </div>
 
-        <div className="flex justify-center space-x-6 mb-16">
-          <button
-            onClick={() => navigate('/projeler/tamamlanan')}
-            className="px-6 py-3 text-sm tracking-widest uppercase transition-all duration-300 bg-zinc-800 text-gray-400 hover:bg-zinc-700 hover:text-white"
-          >
-            Tamamlanan
-          </button>
-            <button
-            onClick={() => navigate('/projeler/devam-eden')}
-            className="px-6 py-3 text-sm tracking-widest uppercase transition-all duration-300 bg-zinc-800 text-gray-400 hover:bg-zinc-700 hover:text-white"
-            >
-            Devam Eden
-            </button>
-        </div>
-
         <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project: any, index) => (
+          {completedProjects.map((project: any, index) => (
             <div
               key={project.id}
               className="group overflow-hidden bg-zinc-900 cursor-pointer border border-zinc-800 hover:border-amber-600/50 transition-all duration-500 hover:shadow-2xl hover:shadow-amber-600/10"
@@ -62,14 +48,8 @@ export function ProjectsPage() {
                   decoding="async"
                 />
                 <div className="absolute top-6 right-6">
-                  <span
-                    className={`px-4 py-2 text-xs tracking-widest uppercase shadow-lg ${
-                      project.status === 'ongoing'
-                        ? 'bg-amber-600 text-white'
-                        : 'bg-zinc-800 text-gray-300'
-                    }`}
-                  >
-                    {project.status === 'ongoing' ? 'Devam Eden' : 'Tamamlanan'}
+                  <span className="px-4 py-2 text-xs tracking-widest uppercase bg-zinc-800 text-gray-300 shadow-lg">
+                    Tamamlanan
                   </span>
                 </div>
               </div>
@@ -106,10 +86,10 @@ export function ProjectsPage() {
           ))}
         </div>
 
-        {projects.length === 0 && (
+        {completedProjects.length === 0 && (
           <div className="text-center py-20">
             <p className="text-gray-500 text-lg">
-              Proje bulunamadı.
+              Tamamlanan proje bulunamadı.
             </p>
           </div>
         )}
@@ -117,3 +97,4 @@ export function ProjectsPage() {
     </section>
   );
 }
+
