@@ -2,13 +2,38 @@
 <html lang="tr">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/mbm-header-logo.png" />
-    <link rel="apple-touch-icon" href="/mbm-header-logo.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/mbm-header-logo.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/mbm-header-logo.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/mbm-header-logo.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#0d0d0d" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
+    <link rel="dns-prefetch" href="https://r.songelisme.com" />
+    <link rel="dns-prefetch" href="https://imaj.emlakjet.com" />
+    <link rel="dns-prefetch" href="https://www.hepsiemlak.com" />
+    <link rel="dns-prefetch" href="https://trthaberstatic.cdn.wp.trt.com.tr" />
+    <link rel="dns-prefetch" href="https://www.indyturk.com" />
+    <link rel="dns-prefetch" href="https://iaahbr.tmgrup.com.tr" />
     
     <!-- Font preconnect for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet"
+      />
+    </noscript>
     
     <title>MBM Elektrik İnşaat</title>
     <meta
@@ -23,6 +48,9 @@
     <meta property="og:image" content="/mbm-header-logo.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:image" content="/mbm-header-logo.png" />
+    
+    <!-- Sitemap -->
+    <link rel="sitemap" type="application/xml" href="/sitemap.xml" />
   </head>
   <body>
     <div id="root"></div>

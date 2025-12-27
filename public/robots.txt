@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://mbmelektrikinsaat.com/sitemap.xml
+
+# Crawl-delay (opsiyonel - gerekirse ayarlayın)
+# Crawl-delay: 1
+

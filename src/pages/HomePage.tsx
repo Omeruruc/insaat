@@ -6,6 +6,12 @@ import { useNavigate } from 'react-router-dom';
 export function HomePage() {
   const navigate = useNavigate();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isMounted, setIsMounted] = useState(false);
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set([0]));
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -14,6 +20,18 @@ export function HomePage() {
 
     return () => clearInterval(interval);
   }, []);
+
+  // Preload next image
+  useEffect(() => {
+    const nextIndex = (currentImageIndex + 1) % heroSliderImages.length;
+    if (!loadedImages.has(nextIndex)) {
+      const img = new Image();
+      img.src = heroSliderImages[nextIndex];
+      img.onload = () => {
+        setLoadedImages((prev) => new Set([...prev, nextIndex]));
+      };
+    }
+  }, [currentImageIndex, loadedImages]);
 
   const nextImage = () => {
     setCurrentImageIndex((prev) => (prev + 1) % heroSliderImages.length);
@@ -29,19 +47,28 @@ export function HomePage() {
     <div className="bg-zinc-950">
       <section className="relative h-screen w-full overflow-hidden">
         <div className="absolute inset-0 w-full h-full">
-          {heroSliderImages.map((image, index) => (
-            <img
-              key={image}
-              src={image}
-              alt={`MBM Elektrik İnşaat proje görseli ${index + 1}`}
-              className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ${
-                index === currentImageIndex
-                  ? 'opacity-100 animate-zoom-in'
-                  : 'opacity-0'
-              }`}
-              loading="lazy"
-            />
-          ))}
+          {heroSliderImages.map((image, index) => {
+            const isCurrent = index === currentImageIndex;
+            const shouldRender = loadedImages.has(index) || index === 0;
+            
+            if (!shouldRender) return null;
+            
+            return (
+              <img
+                key={`${image}-${index}`}
+                src={image}
+                alt={`MBM Elektrik İnşaat proje görseli ${index + 1}`}
+                className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ${
+                  isCurrent
+                    ? 'opacity-100 animate-zoom-in'
+                    : 'opacity-0'
+                }`}
+                loading={index === 0 ? 'eager' : 'lazy'}
+                decoding="async"
+                fetchPriority={index === 0 ? 'high' : 'auto'}
+              />
+            );
+          })}
         </div>
 
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
@@ -62,7 +89,7 @@ export function HomePage() {
         <ChevronRight className="w-6 h-6" />
       </button>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex space-x-3 bg-black/30 backdrop-blur-md px-6 py-3 rounded-full border border-white/10">
+        <div className="absolute bottom-2 md:bottom-4 left-1/2 -translate-x-1/2 z-20 flex space-x-3 bg-black/30 backdrop-blur-md px-6 py-3 rounded-full border border-white/10">
         {heroSliderImages.map((_, index) => (
           <button
             key={index}
@@ -79,25 +106,52 @@ export function HomePage() {
 
         <div className="relative h-full flex flex-col items-center justify-center px-6 text-center z-10">
           <div className="max-w-5xl mx-auto space-y-8">
-            {/* Modern glassmorphism container */}
-            <div className="backdrop-blur-md bg-black/15 border border-white/12 rounded-2xl p-8 md:p-12 shadow-2xl">
-              <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl text-white tracking-tight leading-tight drop-shadow-2xl">
+            {/* Tek container içinde birleşik metin */}
+            <div
+              className={`inline-block backdrop-blur-md bg-black/20 rounded-2xl border border-white/10 px-6 py-6 md:px-10 md:py-8 transition-all duration-1000 ${
+                isMounted
+                  ? 'opacity-100 translate-y-0 scale-100'
+                  : 'opacity-0 translate-y-8 scale-95'
+              }`}
+            >
+              <h1
+                className={`font-serif text-5xl md:text-7xl lg:text-8xl text-white tracking-tight leading-tight drop-shadow-2xl transition-all duration-1000 delay-200 ${
+                  isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                }`}
+              >
                 Sağlam Adım
-                <span className="block text-amber-500 mt-4 drop-shadow-lg">Güçlü İnşaat</span>
+                <span
+                  className={`block text-amber-500 mt-4 drop-shadow-lg transition-all duration-1000 delay-400 ${
+                    isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                  }`}
+                >
+                  Güçlü İnşaat
+                </span>
               </h1>
 
-              <div className="w-24 h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto my-8"></div>
+              <div
+                className={`w-24 h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto my-6 transition-all duration-1000 delay-600 ${
+                  isMounted ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
+                }`}
+              ></div>
 
-              <p className="text-white text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light tracking-wide drop-shadow-lg">
+              <p
+                className={`text-white text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light tracking-wide drop-shadow-lg transition-all duration-1000 delay-700 ${
+                  isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+                }`}
+              >
                 Mimarî vizyonun yapısal ustalıkla buluştuğu yer.
-                <span className="block mt-3 text-gray-200">
-                  Mekanları olağanüstü deneyimlere dönüştürme.
-                </span>
               </p>
+            </div>
 
+            <div
+              className={`pt-4 transition-all duration-1000 delay-900 ${
+                isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+              }`}
+            >
               <button
                 onClick={() => navigate('/projeler')}
-                className="group relative inline-flex items-center space-x-3 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white px-12 py-5 text-sm tracking-widest uppercase transition-all duration-500 overflow-hidden mt-10 rounded-full shadow-xl hover:shadow-2xl hover:scale-105"
+                className="group relative inline-flex items-center space-x-3 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white px-12 py-5 text-sm tracking-widest uppercase transition-all duration-500 overflow-hidden rounded-full shadow-xl hover:shadow-2xl hover:scale-105"
               >
                 <span className="relative z-10 font-semibold">Projeleri Keşfet</span>
                 <ChevronDown className="w-5 h-5 relative z-10 group-hover:translate-y-1 transition-transform duration-300" />
