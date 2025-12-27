@@ -1,6 +1,9 @@
-# Sitemap ve robots.txt için istisna - doğrudan servis edilmeli
+# Favicon ve statik dosyalar için istisna - doğrudan servis edilmeli
+/favicon.ico    /favicon.ico   200
+/mbm-header-logo.png    /mbm-header-logo.png   200
 /sitemap.xml    /sitemap.xml   200
 /robots.txt     /robots.txt    200
+/manifest.json  /manifest.json 200
 
 # Diğer tüm istekler için SPA routing
 /*    /index.html   200
