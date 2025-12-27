@@ -1,2 +1,7 @@
+# Sitemap ve robots.txt için istisna - doğrudan servis edilmeli
+/sitemap.xml    /sitemap.xml   200
+/robots.txt     /robots.txt    200
+
+# Diğer tüm istekler için SPA routing
 /*    /index.html   200
 
