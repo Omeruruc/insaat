@@ -13,7 +13,7 @@ export function FooterBar() {
             <div className="flex items-center space-x-3 mb-6">
               <Building2 className="w-8 h-8 text-amber-600" />
               <span className="text-xl font-serif text-white tracking-wider">
-                MBM
+                MBM Elektrik İnşaat
               </span>
             </div>
             <p className="text-gray-400 font-light leading-relaxed">

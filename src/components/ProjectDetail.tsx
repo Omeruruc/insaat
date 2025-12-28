@@ -71,7 +71,7 @@ export function ProjectDetail({ projectId, onClose }: ProjectDetailProps) {
         <div className="relative h-screen">
           <img
             src={project.hero_image}
-            alt={project.title}
+            alt={`${project.title} proje ana görseli`}
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/30 to-transparent" />
@@ -139,7 +139,7 @@ export function ProjectDetail({ projectId, onClose }: ProjectDetailProps) {
               <div className="relative aspect-video bg-zinc-900 overflow-hidden group">
                 <img
                   src={media[currentMediaIndex].url}
-                  alt={media[currentMediaIndex].caption}
+                  alt={`${project.title} - ${media[currentMediaIndex].caption}`}
                   className="w-full h-full object-cover"
                 />
 
@@ -197,7 +197,7 @@ export function ProjectDetail({ projectId, onClose }: ProjectDetailProps) {
                   >
                     <img
                       src={item.url}
-                      alt={item.caption}
+                      alt={`${project.title} - ${item.caption}`}
                       className="w-full h-full object-cover"
                     />
                   </button>

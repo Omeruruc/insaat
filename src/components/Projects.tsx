@@ -96,7 +96,7 @@ export function Projects({ onProjectClick }: ProjectsProps) {
               <div className="aspect-[16/10] overflow-hidden relative">
                 <img
                   src={project.hero_image}
-                  alt={project.title}
+                  alt={`${project.title} proje görseli`}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />

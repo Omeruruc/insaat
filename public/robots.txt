@@ -1,9 +1,14 @@
 User-agent: *
 Allow: /
 
+# Google Bot
+User-agent: Googlebot
+Allow: /
+
+# Bing Bot
+User-agent: Bingbot
+Allow: /
+
 # Sitemap
 Sitemap: https://mbmelektrikinsaat.com/sitemap.xml
-
-# Crawl-delay (opsiyonel - gerekirse ayarlayın)
-# Crawl-delay: 1
 

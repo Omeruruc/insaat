@@ -19,11 +19,11 @@ export function ProjectsPage() {
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="font-serif text-5xl md:text-6xl text-white mb-6">
-            Portföyümüz
+            Projelerimiz
           </h1>
           <div className="w-24 h-px bg-amber-600 mx-auto mb-8" />
           <p className="text-gray-400 text-lg max-w-2xl mx-auto font-light">
-            Mimarlık mükemmelliğini tanımlayan saygın projelerimizi keşfedin
+            MBM Elektrik İnşaat olarak tamamladığımız TOKİ projeleri ve inşaat taahhüt işlerimizi keşfedin. Ankara, Adıyaman ve Diyarbakır'da güvenilir inşaat çözümleri.
           </p>
         </div>
 
@@ -56,7 +56,7 @@ export function ProjectsPage() {
               <div className="relative aspect-[16/9] overflow-hidden">
                 <img
                   src={project.hero_image}
-                  alt={project.title}
+                  alt={`${project.title} proje görseli`}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   loading="lazy"
                   decoding="async"

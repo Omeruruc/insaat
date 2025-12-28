@@ -50,7 +50,7 @@ export function NavigationBar() {
           >
             <img
               src="/mbm-header-logo.png"
-              alt="MBM"
+              alt="MBM Elektrik İnşaat - Ana Sayfa"
               className="h-12 md:h-14 w-auto object-contain drop-shadow-2xl transition-transform duration-300 group-hover:scale-105"
             />
             <span className="text-base md:text-lg font-semibold text-white tracking-[0.2em] leading-none drop-shadow-lg">

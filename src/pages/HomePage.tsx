@@ -57,7 +57,7 @@ export function HomePage() {
               <img
                 key={`${image}-${index}`}
                 src={image}
-                alt={`MBM Elektrik İnşaat proje görseli ${index + 1}`}
+                alt={`TOKİ projeleri ve inşaat hizmetleri görsel ${index + 1}`}
                 className={`absolute inset-0 w-full h-full object-cover transition-all duration-1000 ${
                   isCurrent
                     ? 'opacity-100 animate-zoom-in'
@@ -76,17 +76,17 @@ export function HomePage() {
       <button
         onClick={prevImage}
         aria-label="Önceki görsel"
-        className="absolute left-8 top-1/2 -translate-y-1/2 z-20 bg-black/30 backdrop-blur-md hover:bg-amber-500 text-white p-4 rounded-full transition-all duration-300 border border-white/20 hover:border-amber-500 hover:scale-110 shadow-xl"
+        className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-20 bg-black/30 backdrop-blur-md hover:bg-amber-500 text-white p-2 md:p-4 rounded-full transition-all duration-300 border border-white/20 hover:border-amber-500 hover:scale-110 shadow-xl"
       >
-        <ChevronLeft className="w-6 h-6" />
+        <ChevronLeft className="w-5 h-5 md:w-6 md:h-6" />
       </button>
 
       <button
         onClick={nextImage}
         aria-label="Sonraki görsel"
-        className="absolute right-8 top-1/2 -translate-y-1/2 z-20 bg-black/30 backdrop-blur-md hover:bg-amber-500 text-white p-4 rounded-full transition-all duration-300 border border-white/20 hover:border-amber-500 hover:scale-110 shadow-xl"
+        className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-20 bg-black/30 backdrop-blur-md hover:bg-amber-500 text-white p-2 md:p-4 rounded-full transition-all duration-300 border border-white/20 hover:border-amber-500 hover:scale-110 shadow-xl"
       >
-        <ChevronRight className="w-6 h-6" />
+        <ChevronRight className="w-5 h-5 md:w-6 md:h-6" />
       </button>
 
         <div className="absolute bottom-2 md:bottom-4 left-1/2 -translate-x-1/2 z-20 flex space-x-3 bg-black/30 backdrop-blur-md px-6 py-3 rounded-full border border-white/10">
@@ -140,7 +140,7 @@ export function HomePage() {
                   isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                 }`}
               >
-                Mimarî vizyonun yapısal ustalıkla buluştuğu yer.
+                MBM Elektrik İnşaat olarak TOKİ projeleri, üst yapı inşaatları ve elektrik taahhüt işlerinde anahtar teslim mühendislik çözümleri sunuyoruz.
               </p>
             </div>
 

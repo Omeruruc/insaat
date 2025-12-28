@@ -4,14 +4,8 @@
   "description": "MBM Elektrik İnşaat: üst yapı, taahhüt ve elektrik projelerinde anahtar teslim mühendislik çözümleri.",
   "icons": [
     {
-      "src": "/mbm-header-logo.png",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
-    },
-    {
-      "src": "/mbm-header-logo.png",
-      "sizes": "512x512",
+      "src": "/mbm-header-logo.png?v=3",
+      "sizes": "407x407",
       "type": "image/png",
       "purpose": "any"
     }

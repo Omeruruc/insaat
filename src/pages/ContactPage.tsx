@@ -55,11 +55,11 @@ export function ContactPage() {
       <div className="relative max-w-7xl mx-auto px-6 lg:px-8">
         <div className="text-center mb-16">
           <h1 className="font-serif text-5xl md:text-6xl text-white mb-6">
-            Birlikte Yürüyelim
+            İletişim
           </h1>
           <div className="w-24 h-px bg-amber-600 mx-auto mb-8" />
           <p className="text-gray-400 text-lg max-w-2xl mx-auto font-light">
-            Mimarlık mükemmelliğine yolculuğunuzu bizimle başlayın
+            TOKİ projeleri, inşaat ve elektrik taahhüt işleri için teklif alın.
           </p>
         </div>
 
