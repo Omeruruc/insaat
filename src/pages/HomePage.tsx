@@ -1,11 +1,12 @@
 import { ChevronDown, ChevronLeft, ChevronRight, Building2, Zap, FileText, Truck } from 'lucide-react';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { heroSliderImages } from '../data/staticData';
 import { useNavigate } from 'react-router-dom';
 
 function HeroContent() {
   const navigate = useNavigate();
   const [showText, setShowText] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     // Component mount olduğunda animasyonu başlat
@@ -16,8 +17,39 @@ function HeroContent() {
     return () => clearTimeout(timer);
   }, []);
 
+  useEffect(() => {
+    // Intersection Observer ile görünürlük değişikliklerini takip et
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            // Görünür hale geldiğinde animasyonu tekrar başlat
+            setShowText(false);
+            const timer = setTimeout(() => {
+              setShowText(true);
+            }, 100);
+            // Timer'ı temizlemek için return etmiyoruz, çünkü bu bir callback içinde
+            // Timer otomatik olarak çalışacak ve temizlenecek
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const currentRef = containerRef.current;
+    if (currentRef) {
+      observer.observe(currentRef);
+    }
+
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
+  }, []);
+
   return (
-    <div className="max-w-5xl mx-auto space-y-8">
+    <div ref={containerRef} className="max-w-5xl mx-auto space-y-8">
       {/* Tek container içinde birleşik metin */}
       <div
         className={`inline-block backdrop-blur-md bg-black/20 rounded-2xl border border-white/10 px-6 py-6 md:px-10 md:py-8 transition-all duration-1000 ${
