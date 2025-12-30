@@ -3,15 +3,81 @@ import { useEffect, useState } from 'react';
 import { heroSliderImages } from '../data/staticData';
 import { useNavigate } from 'react-router-dom';
 
-export function HomePage() {
+function HeroContent() {
   const navigate = useNavigate();
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const [isMounted, setIsMounted] = useState(false);
-  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set([0]));
+  const [showText, setShowText] = useState(false);
 
   useEffect(() => {
-    setIsMounted(true);
+    // Component mount olduğunda animasyonu başlat
+    // Küçük bir gecikme ekleyerek transition'ın çalışmasını garantiye alıyoruz
+    const timer = setTimeout(() => {
+      setShowText(true);
+    }, 100);
+    return () => clearTimeout(timer);
   }, []);
+
+  return (
+    <div className="max-w-5xl mx-auto space-y-8">
+      {/* Tek container içinde birleşik metin */}
+      <div
+        className={`inline-block backdrop-blur-md bg-black/20 rounded-2xl border border-white/10 px-6 py-6 md:px-10 md:py-8 transition-all duration-1000 ${
+          showText
+            ? 'opacity-100 translate-y-0 scale-100'
+            : 'opacity-0 translate-y-8 scale-95'
+        }`}
+      >
+        <h1
+          className={`font-serif text-5xl md:text-7xl lg:text-8xl text-white tracking-tight leading-tight drop-shadow-2xl transition-all duration-1000 delay-200 ${
+            showText ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}
+        >
+          Sağlam Adım
+          <span
+            className={`block text-amber-500 mt-4 drop-shadow-lg transition-all duration-1000 delay-400 ${
+              showText ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+            }`}
+          >
+            Güçlü İnşaat
+          </span>
+        </h1>
+
+        <div
+          className={`w-24 h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto my-6 transition-all duration-1000 delay-600 ${
+            showText ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
+          }`}
+        ></div>
+
+        <p
+          className={`text-white text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light tracking-wide drop-shadow-lg transition-all duration-1000 delay-700 ${
+            showText ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+          }`}
+        >
+          MBM Elektrik İnşaat olarak TOKİ projeleri, üst yapı inşaatları ve elektrik taahhüt işlerinde anahtar teslim mühendislik çözümleri sunuyoruz.
+        </p>
+      </div>
+
+      <div
+        className={`pt-4 transition-all duration-1000 delay-900 ${
+          showText ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
+        }`}
+      >
+        <button
+          onClick={() => navigate('/projeler')}
+          className="group relative inline-flex items-center space-x-3 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white px-12 py-5 text-sm tracking-widest uppercase transition-all duration-500 overflow-hidden rounded-full shadow-xl hover:shadow-2xl hover:scale-105"
+        >
+          <span className="relative z-10 font-semibold">Projeleri Keşfet</span>
+          <ChevronDown className="w-5 h-5 relative z-10 group-hover:translate-y-1 transition-transform duration-300" />
+          <div className="absolute inset-0 bg-gradient-to-r from-amber-600 to-amber-700 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-full" />
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export function HomePage() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [loadedImages, setLoadedImages] = useState<Set<number>>(new Set([0]));
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -65,7 +131,7 @@ export function HomePage() {
                 }`}
                 loading={index === 0 ? 'eager' : 'lazy'}
                 decoding="async"
-                fetchPriority={index === 0 ? 'high' : 'auto'}
+                {...({ fetchpriority: index === 0 ? 'high' : 'auto' } as any)}
               />
             );
           })}
@@ -105,60 +171,7 @@ export function HomePage() {
         </div>
 
         <div className="relative h-full flex flex-col items-center justify-center px-6 text-center z-10">
-          <div className="max-w-5xl mx-auto space-y-8">
-            {/* Tek container içinde birleşik metin */}
-            <div
-              className={`inline-block backdrop-blur-md bg-black/20 rounded-2xl border border-white/10 px-6 py-6 md:px-10 md:py-8 transition-all duration-1000 ${
-                isMounted
-                  ? 'opacity-100 translate-y-0 scale-100'
-                  : 'opacity-0 translate-y-8 scale-95'
-              }`}
-            >
-              <h1
-                className={`font-serif text-5xl md:text-7xl lg:text-8xl text-white tracking-tight leading-tight drop-shadow-2xl transition-all duration-1000 delay-200 ${
-                  isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                }`}
-              >
-                Sağlam Adım
-                <span
-                  className={`block text-amber-500 mt-4 drop-shadow-lg transition-all duration-1000 delay-400 ${
-                    isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                  }`}
-                >
-                  Güçlü İnşaat
-                </span>
-              </h1>
-
-              <div
-                className={`w-24 h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto my-6 transition-all duration-1000 delay-600 ${
-                  isMounted ? 'opacity-100 scale-x-100' : 'opacity-0 scale-x-0'
-                }`}
-              ></div>
-
-              <p
-                className={`text-white text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light tracking-wide drop-shadow-lg transition-all duration-1000 delay-700 ${
-                  isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-                }`}
-              >
-                MBM Elektrik İnşaat olarak TOKİ projeleri, üst yapı inşaatları ve elektrik taahhüt işlerinde anahtar teslim mühendislik çözümleri sunuyoruz.
-              </p>
-            </div>
-
-            <div
-              className={`pt-4 transition-all duration-1000 delay-900 ${
-                isMounted ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-              }`}
-            >
-              <button
-                onClick={() => navigate('/projeler')}
-                className="group relative inline-flex items-center space-x-3 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-white px-12 py-5 text-sm tracking-widest uppercase transition-all duration-500 overflow-hidden rounded-full shadow-xl hover:shadow-2xl hover:scale-105"
-              >
-                <span className="relative z-10 font-semibold">Projeleri Keşfet</span>
-                <ChevronDown className="w-5 h-5 relative z-10 group-hover:translate-y-1 transition-transform duration-300" />
-                <div className="absolute inset-0 bg-gradient-to-r from-amber-600 to-amber-700 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left rounded-full" />
-              </button>
-            </div>
-          </div>
+          <HeroContent key={currentImageIndex} />
         </div>
       </section>
 
@@ -186,6 +199,7 @@ export function HomePage() {
                     <li>Toplu konutlar (TOKİ)</li>
                     <li>Ticari binalar</li>
                     <li>Sosyal tesisler</li>
+                    <li>Taahhüt işleri</li>
                   </ul>
                 </div>
               </div>
